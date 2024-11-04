@@ -4,8 +4,9 @@ De la aplicación a construir. Esto permite centrarme en hacer lógica en el bac
 Haciendo más lógica en los servicios, etc., sacando esa lógica de pequeñas consultas en el frontend. 
 Esto me ha llevado a limitar la cantidad de controladores a los que son necesarios para hacer funcionar la aplicación.
 
-A futuro, este enfoque también me permitiría una evolución más orgánica del proyecto, donde se pueden añadir más funcionalidades.
-A medida que se necesiten más funciones adicionales. 
+A futuro, este enfoque también me permitiría una evolución más orgánica del proyecto, donde se pueden añadir más funcionalidades a medida que se necesiten más funciones adicionales.
+
+
 -----
 
 # Uso excesivo de @Query
@@ -17,18 +18,20 @@ Sobre las consultas generadas y optimiza el rendimiento si se realizan de forma 
 
 # Estructura de Paquetes
 La estructura de los paquetes en el proyecto está diseñada para ser modular, lo que facilita tanto la mantenibilidad 
-como la escalabilidad del sistema. Pero aún así no empleo arquitectura hexagonal o "clean archictecture" debido a que me
-parecen arquitecturas demasiado complejas para el proyecto tan simple que tenemos aquí.
+como la escalabilidad del sistema. Pero aún así no empleo arquitectura hexagonal o "clean archictecture" debido a que me parecen arquitecturas demasiado complejas para el proyecto tan simple que tenemos aquí.
 
 Con este modelo, cada paquete tiene una responsabilidad específica, aunque al no existir distintos cruds, las DTO y 
 los repositorios se reusan entre los distintos paquetes. Cada paquete contiene modelos, repositorios, servicios y 
 controladores que están relacionados entre sí para seguir con este modelo.
+
 ----
+
 # Eleccion de Gradle
 Gradle es mi herramienta de preferencia, sobre todo para proyectos pequeños, aunque conozco Maven igual de bien. 
-Personalmente prefiero Gradle por el formato simple que utiliza (sobre todo basado en Groovy), que comparado con Maven es 
-mucho más legible, pero cuando un proyecto empieza a necesitar varios módulos es cuando mi preferencia se inclina totalmente
-hacia Maven. Dicho esto, para un proyecto de estas dimensiones con pocas dependencias, Gradle es mi opción preferida.
+Personalmente prefiero Gradle por el formato simple que utiliza (sobre todo basado en Groovy), que comparado con Maven es mucho más legible, pero cuando un proyecto empieza a necesitar varios módulos es cuando mi preferencia se inclina totalmente hacia Maven. 
+
+Dicho esto, para un proyecto de estas dimensiones con pocas dependencias, Gradle es mi opción preferida.
+
 ----
 
 # Uso de Lombok y exclusion de MapStruct
