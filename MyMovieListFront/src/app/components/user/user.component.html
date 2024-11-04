@@ -1,0 +1,134 @@
+<div class="main">
+
+  <aside class="aside-content">
+
+      @for (group of groups; track $index) {
+
+        <mat-card appearance="outlined" class="card">
+          <mat-card-header>
+            <mat-card-title class="title">{{group.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            @if (group.members) {
+              <ul>
+                @for (username of group.members; track $index) {
+                  <li class = "li-aside">{{username}}</li>
+                }
+              </ul>
+            } @else {
+              @if (userId !== id) {
+                <p class = "text-aside">{{simpleUser.username}} is alone in this group.</p>
+              } @else {
+                <p class = "text-aside">Youre alone in this group.</p>
+              }
+            }
+          </mat-card-content>
+        </mat-card>
+      }
+  
+      @if (this.userId !== null && this.userId !== undefined && this.userId !== "") {
+        <mat-card appearance="outlined" class="card">
+          <mat-card-content style="display: flex; flex-flow:column nowrap; align-items: center; justify-content: center;">
+            <button (click)="openGroupDialog()" style="margin: 10px 0; width: 90%;display: flex; align-items: center; justify-content: center;" mat-raised-button color="primary">
+              <p>Create Group</p>
+            </button>
+            <button (click)="openJoinGroupDialog()" style="margin: 10px 0; width: 90%;display: flex; align-items: center; justify-content: center;" mat-raised-button color="primary">
+              <p>Join Group</p>
+            </button>
+          </mat-card-content>
+        </mat-card>
+      } @else {
+        <mat-card appearance="outlined" class="card">
+          <mat-card-content style="display: flex; flex-flow:column nowrap; align-items: center; justify-content: center;">
+            <p class = "text-aside">Sign in to create or join groups.</p>
+            <button (click)="navigateToSignIn()" style="margin: 10px 0; width: 90%;display: flex; align-items: center; justify-content: center;" mat-raised-button color="primary">
+              <p>Sign In</p>
+            </button>
+          </mat-card-content>
+        </mat-card>
+      }
+      
+    
+    
+  </aside>
+
+  <main class="main-content">
+    <mat-card appearance="outlined" class="card">
+      
+      <mat-card-header>
+        <mat-card-title class="title">{{simpleUser.username}}</mat-card-title>
+      </mat-card-header>
+      
+      <mat-divider></mat-divider>
+
+      <mat-card-content>
+        <div class="subtitle-with-padding">
+          @if (userId !== id) {
+            <span class="subtitle">{{simpleUser.username}} ratings:</span>
+          } @else {
+            <span class="subtitle">Your ratings:</span>
+          }
+        </div>
+
+        <table mat-table [dataSource]="dataSource" style="margin: 2px 0 8px 0;">
+
+         
+          <!-- Position Column -->
+          <ng-container matColumnDef="title">
+            <th mat-header-cell *matHeaderCellDef> Title </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef> Image </th>
+            <td mat-cell *matCellDef="let element">
+              <img class="top-movies-img" src="{{element.imageUrl}}">
+            </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="synopsis">
+            <th mat-header-cell *matHeaderCellDef> Synopsis </th>
+            <td mat-cell *matCellDef="let element"> {{element.shortSynopsis}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="rating">
+            <th mat-header-cell *matHeaderCellDef> Rating </th>
+            <td mat-cell *matCellDef="let element"> {{element.mediaRating}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let element"> 
+              <div style="display: flex; align-items: center; justify-content: center; margin: 0; padding:0;">
+                <button mat-mini-fab color="primary" (click)="openDialog(element)">
+                  <mat-icon>slideshow</mat-icon>
+                </button>
+                @if (this.id === this.userId) {
+                  <button mat-mini-fab color="primary">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                }
+              </div>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <div style="display: flex; flex-direction: row; flex-wrap: nowrap; align-items: center; justify-content: flex-end;">
+          <mat-paginator [length]="resultsLength" [pageSizeOptions]="[5, 10, 25]"
+                         showFirstLastButtons>
+          </mat-paginator>
+
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </main>
+
+</div>

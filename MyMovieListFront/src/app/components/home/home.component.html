@@ -1,0 +1,51 @@
+
+<main class="one-element">
+  <mat-card appearance="outlined" class="card">
+    <mat-card-header>
+      <mat-card-title class="title">Home</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <p></p>
+      <b>Welcome to MyMovieList</b>
+      <div style="display: flex; flex-flow: column nowrap;">
+        <button style="margin: 2% 1%" mat-raised-button color="primary" (click)="navigateToTopSeries()">
+          <span>Check Top Movies</span>
+        </button>
+        @if (id === null || id === undefined || id === '') {
+          <button style="margin: 2% 1%" mat-raised-button color="primary" (click)="navigateToSignIn()">
+            <span>Sign In</span>
+          </button>
+  
+          <button style="margin: 2% 1%" mat-raised-button color="primary" (click)="navigateToSignUp()">
+              <span>Sign Up</span>
+          </button>
+        } @else {
+          <button style="margin: 2% 1%" mat-raised-button color="primary" (click)="navigateToCreateGroup()">
+              <span>Create New Movie</span>
+          </button>
+  
+          <button style="margin: 2% 1%" mat-raised-button color="primary" (click)="navigateToYourPage()">
+            <span>Go To Your Profile</span>
+          </button>
+
+          <button style="margin: 2% 1%" mat-raised-button color="primary" (click)="openBottomSheet()">
+            <span>Go To Your Groups</span>
+          </button>
+  
+          <button style="margin: 2% 1%" mat-raised-button color="primary" (click)="signOut()">
+              <span>Sign Out</span>
+          </button>
+        }
+
+        <!--    @if (groupsUser.groups.length === 0) {
+                <button mat-menu-item disabled>You don't have any group</button>
+            } @else {
+                @for(group of groupsUser.groups; track $index) {
+                    <button mat-menu-item (click)="navigateToGroup(group.id)">{{group.name}}</button>
+                }
+            }-->
+      </div>
+    </mat-card-content>
+  </mat-card>
+</main>

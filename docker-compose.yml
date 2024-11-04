@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: superSecretPassword1234!
+      MYSQL_DATABASE: movie_db
+      MYSQL_USER: movie_user
+      MYSQL_PASSWORD: superSecretPassword1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  spring-app:
+    build: ./MyMovieListBack
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/movie_db
+      SPRING_DATASOURCE_USERNAME: movie_user
+      SPRING_DATASOURCE_PASSWORD: superSecretPassword1234
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_EXPIRATION_TIME: ${JWT_EXPIRATION_TIME}
+      SPRING_PROFILES_ACTIVE: ${SPRING_PROFILE}  
+
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+
+  angular-app:
+    build: ./MyMovieListFront
+    ports:
+      - "80:80"
+
+volumes:
+  mysql_data:

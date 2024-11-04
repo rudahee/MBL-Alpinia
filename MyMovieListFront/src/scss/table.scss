@@ -1,0 +1,58 @@
+.one-element-large {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: calc(90vh - calc(2.5vh + 2em));
+    padding: 2em 0;
+
+    .card-table {
+        width: 97%;
+
+        .card-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-title {
+            font-size: 1.6em;
+            padding: 1px 0 5px 0;
+
+        }
+    }
+}
+
+.top-movies-img {
+    height: 95px;
+    width: 70px;
+}
+
+.footer-table {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.sort-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin:0 5px;
+}
+
+.sort-title {
+    font-size: 12px;
+    font-weight: light;
+    margin-right: 5px;
+  }
+  
+.group-sort-group {
+    display: flex; 
+    flex-direction: row; 
+    flex-wrap: nowrap; 
+    align-items: flex-start; 
+    justify-content: flex-start;
+}

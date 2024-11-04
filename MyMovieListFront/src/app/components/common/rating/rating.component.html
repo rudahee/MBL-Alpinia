@@ -1,0 +1,26 @@
+<span mat-dialog-title class="dialog-title">Rate Movie</span>
+<mat-divider></mat-divider>
+<mat-dialog-content class="dialog">
+  <form class="form" action="#" [formGroup] = "ratingForm">
+    <mat-form-field appearance="outline" style="width: 90%;">
+      <mat-label for="rating">Rating</mat-label>
+      <input matInput id="rating" name="rating" type="number" formControlName="rating" min="0" max="10" required>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 90%;">
+      <mat-label for="comment">Comment</mat-label>
+      <textarea matInput id="comment" name="comment" type="number" formControlName="comment" minlength="0" maxlength="255"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+
+<mat-dialog-actions>
+  <div class="buttons-modal">
+    <div class = "actions-modal">
+      <button mat-raised-button color="primary" (click)="createRating()">Rate!</button>
+    </div>
+    <div class = "actions-modal">
+      <button mat-raised-button mat-dialog-close color="basic" (click)="cancel()">Close</button>
+    </div>
+  </div>
+</mat-dialog-actions>

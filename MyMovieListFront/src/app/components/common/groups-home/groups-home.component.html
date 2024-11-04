@@ -1,0 +1,14 @@
+<mat-nav-list>
+
+  @if (groupsUser.groups.length === 0) {
+    <a mat-list-item>
+      <span matListItemTitle>You don't have any group.</span>
+    </a>  
+  } @else {
+    @for(group of groupsUser.groups; track $index) {
+        <a mat-list-item (click)="navigateToGroup(group.id)">
+          <span matListItemTitle>{{group.name}}</span>
+        </a>
+    }
+  }
+</mat-nav-list>

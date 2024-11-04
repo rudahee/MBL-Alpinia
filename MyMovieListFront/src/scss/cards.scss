@@ -1,0 +1,203 @@
+.rating-section {
+    margin: 2% 0;
+    .ratings {
+        display: flex;
+        flex-flow: row nowrap;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+}
+
+.subtitle {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 0 0 0.2em 0 
+}
+
+.divider-padding {
+    padding: 0;
+}
+
+.watch {
+    display: flex;
+    flex-flow:column nowrap; 
+    justify-content: space-between;
+    margin: 0;
+
+    .watch-content {
+        display:flex; 
+        justify-content: space-around;
+        
+    }
+}
+
+.no-padding {
+    margin: 0;
+    padding: 0;
+}
+
+.watch-content-item {
+    width: 45%;
+    display: flex;
+    flex-flow: column nowrap;
+    .item {
+        border: 2px solid #673AB7; 
+        border-radius: 5px;
+        box-shadow: $light-shadow;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .description {
+        font-size: small;
+        font-weight: lighter;
+    }
+}
+
+.main {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: calc(90vh - calc(2.5vh + 2em));
+    padding: 2em 0;
+    
+
+    .main-content {
+        width: 75%;
+        padding-bottom: 5%;
+        .title {
+            font-size: 1.8em;
+            font-weight: bold;
+            padding: 0.2em 0 ;
+        }
+
+        .movie-content {
+            display:flex; 
+            flex-flow: row nowrap;
+
+            .left {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-wrap: wrap;
+                margin: 1%;
+                .movie-img {
+                    height: 400px;
+                    width: 280px;
+                    border: 2px solid #673AB7; 
+                    border-radius: 5px; 
+                }
+            }
+
+
+            .right {
+                display:flex; 
+                flex-flow:column nowrap; 
+                justify-content: space-between;
+                
+                .sinopsis-content {
+                    padding: 0;
+                    margin: 0;
+                }
+            }
+        }
+    } 
+
+
+    .aside-content {
+        width: 20%;
+
+        .card {
+            margin-bottom: 5%;
+
+            .title {
+                font-size: 1.2em;
+                font-weight: bold;
+                padding: 0 0 0.2em 0 ;
+            }
+
+            .text-aside {
+                font-size: 0.9em;
+                margin: 0.6em 0.4em ;
+            }
+
+            .li-aside {
+                font-size: 0.9em;
+                margin: 0;
+                padding: 0;
+            }
+        }
+    }
+}
+
+.subtitle-with-padding {
+    padding: 3% 0 0 0;
+}
+
+
+.one-element {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: calc(95vh - calc(2.5vh + 2em));
+
+    .title {
+        font-size: 1.8em;
+        font-weight: bold;
+        padding: 0.2em 0 ;
+    }
+
+    .subtitle {
+        font-size: 0.9em;
+        padding: 0.2em 0;
+    }
+    .card {
+        margin-top: 4vw;
+        width: 50%;
+    }
+
+    .card-large {
+        margin-top: 4vw;
+        width: 70%;
+    }
+
+    .form {
+        padding: 1.3em 0 0 0;
+        display: flex;
+        align-items: center;
+        flex-flow: column nowrap;
+        
+        .field {
+            margin: 3px 0;
+            padding: 3px 0;
+            width: 100%;
+
+        }
+    }
+    .actions {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1em 10px 2em 10px;
+    }
+    .button {
+        width: 90%;
+        padding: 1.6em 0;
+    }
+}
+.rating-edit {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button {
+    margin-top: 1em;
+    width: 40%;
+    padding: 1.6em 0;
+}

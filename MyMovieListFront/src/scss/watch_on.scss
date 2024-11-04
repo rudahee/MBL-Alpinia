@@ -1,0 +1,23 @@
+
+.item-modal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    .description {
+        font-size: small;
+        padding-right: 15px;
+        color: black;
+    }
+}
+.buttons-modal{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+}
+.actions-modal {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}

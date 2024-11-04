@@ -1,0 +1,50 @@
+<main class="one-element">
+  <mat-card appearance="outlined" class="card">
+    <mat-card-header>
+      <mat-card-title class="title">Sign Up</mat-card-title>
+      <mat-card-subtitle class="subtitle">Already have an account? <a href="google.com">Sign in</a></mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <form class="form" action="#" [formGroup] = "signUpForm">
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label for="username">Username</mat-label>
+          <input matInput id="username" name="username" type="text" alt="input for username" formControlName="username" required>
+          <mat-hint>Username is required, 5 characters minimum</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label for="fullname">Fullname</mat-label>
+          <input matInput id="fullname" name="fullname" type="text" alt="input for fullname" formControlName="fullname" required>
+          <mat-hint>Username is required, 5 characters minimum</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="field" appearance="outline" style="width: 90%">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="Ex. john.doe@example.com">
+            <mat-hint>Please enter a valid email address</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label for="password">Password</mat-label>
+          <input matInput id="password" name="password" [type]="(visibilityPassword) ? 'text': 'password'" alt="input for password" formControlName="password" required>
+          <button matSuffix mat-icon-button (click)="visibilityPassword=!visibilityPassword">
+            <mat-icon>{{(visibilityPassword) ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-hint>Password is required, 8 characters minimum</mat-hint>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label for="confirm_password">Confirm Password</mat-label>
+          <input matInput id="confirm_password" name="confirm_password" [type]="(visibilityRepeatPassword) ? 'text': 'password'" alt="input for repeat password" formControlName="confirm_password" required>
+          <button matSuffix mat-icon-button (click)="visibilityRepeatPassword=!visibilityRepeatPassword">
+            <mat-icon>{{(visibilityRepeatPassword) ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-hint>Must match the password field</mat-hint>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="actions">
+      <button class="button" mat-raised-button color="primary" (click)="signUp()">Sign up</button>
+    </mat-card-actions>
+  </mat-card>
+</main>

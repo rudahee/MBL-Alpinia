@@ -1,0 +1,144 @@
+<div class="main">
+
+  <aside class="aside-content">
+    @if (userId !== "" && userId !== null){
+
+      @for (group of groups; track $index) {
+
+        <mat-card appearance="outlined" class="card">
+          <mat-card-header>
+            <mat-card-title class="title">{{group.name}}</mat-card-title>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            @if (group.avgRating) {
+                <p class = "text-aside"><b>Media Rating:</b> {{group.avgRating}}/10</p>
+              @if(group.maxRating != group.avgRating || group.minRating != group.avgRating) {
+                <p class = "text-aside"><b>Max Rating:</b> {{group.maxRating}}/10 by {{group.maxRatingUsername}}</p>
+                <p class = "text-aside"><b>Min Rating:</b> {{group.minRating}}/10 by {{group.minRatingUsername}}</p>
+              } @else {
+                @if (group.maxRatingUsername == username && group.minRatingUsername == username) {
+                  <p class = "text-aside">Only you has rated this movie.</p>
+                } @else {
+                  <p class = "text-aside">Only one person has rated this movie.</p>
+                }
+              }
+            } @else {
+              <p class = "text-aside">Nobody on your group has rated the movie.</p>
+            }
+          </mat-card-content>
+        </mat-card>
+      } 
+        @if (groups.length === 0) {
+          <mat-card appearance="outlined" class="card">
+            <mat-card-content style="display: flex; flex-flow:column nowrap; align-items: center; justify-content: center;">
+              <button (click)="openGroupDialog()" style="margin: 10px 0; width: 90%;display: flex; align-items: center; justify-content: center;" mat-raised-button color="primary">
+                <p>Create Group</p>
+              </button>
+              <button (click)="openJoinGroupDialog()" style="margin: 10px 0; width: 90%;display: flex; align-items: center; justify-content: center;" mat-raised-button color="primary">
+                <p>Join Group</p>
+              </button>
+            </mat-card-content>
+          </mat-card>
+        } 
+   } @else {
+    <mat-card appearance="outlined" class="card">
+      <mat-card-content style="display: flex; flex-flow:column nowrap; align-items: center; justify-content: center;">
+        <p class = "text-aside">Sign in to see your groups' notes.</p>
+        <button (click)="navigateToSignIn()" style="margin: 10px 0; width: 90%;display: flex; align-items: center; justify-content: center;" mat-raised-button color="primary">
+          <p>Sign In</p>
+        </button>
+      </mat-card-content>
+    </mat-card>
+  }
+  </aside>
+
+
+  <main class="main-content">
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header>
+        <mat-card-title class="title">{{movie.name}}</mat-card-title>
+      </mat-card-header>
+
+      <mat-divider></mat-divider>
+
+      <div class="movie-content">
+        <div class="left">
+          <img class="movie-img"
+            src="{{movie.imageUrl}}">
+        </div>
+        <mat-divider [vertical]="true"></mat-divider>
+
+        <div class="right">
+          <mat-card-content>
+            <div>
+              <span class="subtitle">Synopsis: </span>
+              <p class="sinopsis-content">{{movie.synopsis}}</p>
+            </div>
+          </mat-card-content>
+
+
+          
+          <mat-card-content class="no-padding">
+            <div class="watch">
+              <span class="subtitle">Watch Now: </span>
+              <div class="watch-content">
+                <div class="watch-content-item">
+                  <span class="description">Watch now: </span>
+                  <span class="item">
+                    @for (platform of movie.watchOn; track $index) {
+                    <img class = "item-shadow" src="{{'assets/platforms/' + platform + '-50.png'}}">
+                    }
+                  </span>
+                </div>
+                <div class="watch-content-item">
+                  <span class="description">Buy now: </span>
+                  <span class="item">
+                    @for (platform of movie.buyOn; track $index) {
+                    <img src="{{'assets/platforms/' + platform + '-50.png'}}">
+                    }
+                  </span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+
+      <mat-card-content class="rating-section">
+        @if(movie.mediaRating !== undefined) {
+            @if (user_rating.yourRating === undefined) {
+              <div class="ratings">
+                <p><b>Global rating: </b> {{movie.mediaRating}}/10</p>
+              </div>
+              <div class="rating-edit">
+                <button class="button" mat-raised-button color="primary" (click)="openDialog()">Add Your Rating</button>
+              </div>
+            }@else {
+              <div class="subtitle">Your opinion:</div>
+              <div> {{user_rating.comment}}</div>
+              <div class="ratings">
+                <p><b>Your rating:</b> {{user_rating.yourRating}}/10</p>
+                <p><b>Global rating: </b> {{movie.mediaRating}}/10</p>
+              </div>
+                
+              <mat-divider></mat-divider>
+              <div class="rating-edit">
+                <button class="button" mat-raised-button color="primary" (click)="openDialog()">Edit Your Rating</button>
+              </div>
+            }
+        } @else {
+          <div class="ratings">
+            <p>Nobody has rated this movie yet. Rate now!</p>
+          </div>
+          <div class="rating-edit">
+            <button class="button" mat-raised-button color="primary" (click)="openDialog()">Add Your Rating</button>
+          </div>
+        }
+      </mat-card-content>
+  </mat-card>
+</main>
+
+
+</div>

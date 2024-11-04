@@ -1,0 +1,71 @@
+<div class="main">
+
+  <aside class="aside-content">
+
+
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header>
+        <mat-card-title class="title">Invite your friends!</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <ul>
+          <li>Share this code: {{group.inviteCode}}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+
+
+
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header>
+        <mat-card-title class="title">Members</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+          <ul>
+            @for (username of members.members; track $index) {
+              <li>{{username}}</li>
+            }
+          </ul>
+      </mat-card-content>
+    </mat-card>
+  </aside>
+  <main class="main-content">
+    <mat-card appearance="outlined" class="card">
+      <mat-card-header>
+        <mat-card-title class="title">{{group.name}} - #{{group.inviteCode}}</mat-card-title>
+      </mat-card-header>
+    </mat-card>
+  
+  
+    <div class="group-grid">
+      @for (movie of group.movies; track $index) {
+
+        <mat-card appearance="outlined" class="group-grid-item">
+          <mat-card-header style="display: flex; flex-flow: row nowrap; align-items: center; justify-content: space-between; padding-bottom: 2%;">
+            <mat-card-title class="subtitle">{{movie.name}}</mat-card-title>
+            <div>
+              <button mat-mini-fab color="primary" (click)="openDialog(movie)">
+                <mat-icon>slideshow</mat-icon>
+              </button>
+            </div>
+          </mat-card-header>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <div style="display: flex; flex-flow: row wrap; align-items: flex-start; justify-content: space-between; margin-top: 4px;">
+              <ul>
+                @for (user of movie.users; track $index) {
+                  <li>{{user.name}}: {{user.rating}}</li>
+                }
+                <li><b>Media:</b> {{movie.averageGroupRating}}</li>
+              </ul>
+              <img src="{{movie.imageUrl}}" width="70" height="100">
+            </div>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+
+  </main>
+</div>

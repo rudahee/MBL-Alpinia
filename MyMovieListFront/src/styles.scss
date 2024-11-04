@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
+@import 'scss/reset.scss';
+@import 'scss/variables.scss';
+
+@import 'scss/layout.scss';
+@import 'scss/cards.scss';
+
+@import 'scss/watch_on.scss';
+@import 'scss/table.scss';
+@import 'scss/grid.scss';
+
+
+
+html, body { height: 100%; }
+body {
+    background-color: $web-background-color;
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

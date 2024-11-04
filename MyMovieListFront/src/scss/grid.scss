@@ -1,0 +1,12 @@
+.group-grid {
+    display: flex;
+    flex-flow: row wrap;
+    margin: 2% 0;
+    align-items: flex-start;
+
+
+    .group-grid-item {
+        width: 32%;
+        margin: 1% auto;
+    }
+}

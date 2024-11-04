@@ -1,0 +1,27 @@
+<span mat-dialog-title class="dialog-title">Watch Now</span>
+<mat-divider></mat-divider>
+<mat-dialog-content class="dialog">
+  <div class="item-modal">
+    <span class="description">See on: </span>
+    <span class="item">
+      @for (platform of movie.watchOn; track $index) {
+      <img class = "item-shadow" src="{{'assets/platforms/' + platform + '-50.png'}}">
+      }
+    </span>
+  </div>
+  <div class="item-modal">
+    <span class="description">Buy on: </span>
+    <span class="item">
+      @for (platform of movie.buyOn; track $index) {
+      <img src="{{'assets/platforms/' + platform + '-50.png'}}">
+      }
+    </span>
+  </div>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+
+<mat-dialog-actions>
+  <div class = "actions-modal">
+    <button mat-raised-button mat-dialog-close color="basic">Close</button>
+  </div>
+</mat-dialog-actions>

@@ -1,0 +1,48 @@
+<main class="one-element">
+  <mat-card appearance="outlined" class="card-large">
+    <mat-card-header>
+      <mat-card-title class="title">Create Movie</mat-card-title>
+      <mat-card-subtitle class="subtitle">Check if movie exists <a href="google.com">here</a></mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <form class="form" action="#" [formGroup] = "createMovieForm">
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label for="name">Name</mat-label>
+          <input matInput id="name" name="name" type="text" formControlName="name" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label for="shortSynopsis">Short Synopsis</mat-label>
+          <input matInput id="shortSynopsis" name="shortSynopsis" type="text" formControlName="shortSynopsis" maxlength="120" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label for="synopsis">Synopsis</mat-label>
+          <textarea matInput id="synopsis" name="synopsis" type="text" formControlName="synopsis" maxlength="750" required></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 90%;">
+          <mat-label for="imageUrl">Cover URL Image</mat-label>
+          <input matInput id="imageUrl" name="imageUrl" type="text" formControlName="imageUrl" maxlength="100" required>
+        </mat-form-field>
+        <mat-form-field class="field" appearance="outline" style="width: 90%">
+          <mat-label for="watchOn">Watch On</mat-label>
+          <mat-select multiple id="watchOn" name="watchOn" formControlName="watchOn" required>
+            @for (platform of platforms; track platform) {
+              <mat-option [value]="platform">{{platform}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="field" appearance="outline" style="width: 90%">
+          <mat-label for="buyOn">Buy On</mat-label>
+          <mat-select multiple id="buyOn" name="buyOn" formControlName="buyOn" required>
+            @for (platform of platforms; track platform) {
+              <mat-option [value]="platform">{{platform}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>    
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="actions">
+      <button class="button" style="width: 70%;" mat-raised-button color="primary"  (click)="createMovie()">Create Movie</button>
+    </mat-card-actions>
+  </mat-card>
+</main>

@@ -1,0 +1,31 @@
+<main class="one-element">
+  <mat-card appearance="outlined" class="card">
+    <mat-card-header>
+      <mat-card-title class="title">Sign In</mat-card-title>
+      <mat-card-subtitle class="subtitle">New user? <a href="google.com">Create an account</a></mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <form class="form" action="#" [formGroup] = "signInForm">
+        <mat-form-field class="field">
+          <mat-label>Username</mat-label>
+          <input type="text" matInput id="username" name="username" formControlName="username" required>
+          @if (signInForm.hasError('required')) {
+            <mat-error>Username is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+        <mat-form-field class="field">
+          <mat-label>Password</mat-label>
+          <input type="password" matInput id="password" name="password" [type]="(visibilityPassword) ? 'text': 'password'" formControlName="password" required>
+          <button matSuffix mat-icon-button (click)="visibilityPassword=!visibilityPassword">
+            <mat-icon>{{(visibilityPassword) ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-card-actions class="actions">
+      <button class="button" mat-raised-button color="primary" (click)="signIn()">Sign in</button>
+    </mat-card-actions>
+  </mat-card>
+</main>

@@ -1,0 +1,22 @@
+<span mat-dialog-title class="dialog-title">Create new group</span>
+<mat-divider></mat-divider>
+<mat-dialog-content class="dialog">
+  <form class="form" action="#" [formGroup] = "newGroupForm">
+    <mat-form-field appearance="outline" style="width: 90%;">
+      <mat-label for="name">name</mat-label>
+      <input matInput id="name" name="name" type="text" formControlName="name" required>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-divider></mat-divider>
+
+<mat-dialog-actions>
+  <div class="buttons-modal">
+    <div class = "actions-modal">
+      <button mat-raised-button color="primary" (click)="createGroup()">Create</button>
+    </div>
+    <div class = "actions-modal" (click)="cancel()">
+      <button mat-raised-button mat-dialog-close color="basic">Close</button>
+    </div>
+  </div>
+</mat-dialog-actions>
